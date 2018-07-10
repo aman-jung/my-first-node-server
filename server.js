@@ -36,9 +36,10 @@ app.get('/about',(req,res)=>{
 		//currentYear: new Date().getFullYear()
 	});
 });
+
 app.get('/project',(req,res)=>{
 	app.render('project',{
-		title:"portfolio page"
+		title:"portfolio page",
 	});
 });
 /*app.use((req,res,next)=>{
