@@ -38,7 +38,7 @@ app.get('/about',(req,res)=>{
 });
 
 app.get('/project',(req,res)=>{
-	app.render('project',{
+	res.render('project',{
 		title:"portfolio page",
 	});
 });
