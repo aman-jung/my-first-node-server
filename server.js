@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var fs = require('fs');
 const hbs = require('hbs');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;//to make port as dynamic,we make use of process.env.PORT to specify port from the pc. If not then 3000 will be used as default
 hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerHelper('getcurrentYear',()=>{
 	return new Date().getFullYear()
@@ -36,9 +36,14 @@ app.get('/about',(req,res)=>{
 		//currentYear: new Date().getFullYear()
 	});
 });
+app.get('/project',(req,res)=>{
+	app.render('project',{
+		title:"portfolio page"
+	});
+});
 /*app.use((req,res,next)=>{
 	res.render('maintenance.hbs');
 });*/
 app.listen(port,()=>{
-	console.log("Server is up and running");
+	console.log(`Server is up and running at ${port}`);
 });
