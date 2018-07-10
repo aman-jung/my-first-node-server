@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var fs = require('fs');
 const hbs = require('hbs');
+const port = process.env.PORT || 3000;
 hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerHelper('getcurrentYear',()=>{
 	return new Date().getFullYear()
@@ -20,10 +21,7 @@ app.use((req,res,next)=>{
 	next();
 });
 app.use(express.static(__dirname + '/public'));
-/*app.use((req,res,next)=>{
-	res.render('maintenance.hbs');
-});*/
-app.set('view engine', 'hbs');//which is same as app.use
+app.set('view engine','hbs');//which is same as app.use
 app.get('/',(req,res)=>{
 	//res.send('<h1>HEllo world</h1>');
 	res.render('home',{
@@ -38,7 +36,9 @@ app.get('/about',(req,res)=>{
 		//currentYear: new Date().getFullYear()
 	});
 });
-
-app.listen(3000,()=>{
+/*app.use((req,res,next)=>{
+	res.render('maintenance.hbs');
+});*/
+app.listen(port,()=>{
 	console.log("Server is up and running");
 });
